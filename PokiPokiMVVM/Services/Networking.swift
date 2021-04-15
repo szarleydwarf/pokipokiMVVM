@@ -16,22 +16,28 @@ enum NetErrors: Error {
 }
 protocol NetworkingProtocol {
     func getURL (_ host: String, _ path:String) -> URL?
-    func getModels(_ url: URL?) -> Future<Pokiemonies, NetErrors>
+    func getModels<T: Codable>(_ url: URL?) -> Future<T, NetErrors> 
+}
+
+extension NetworkingProtocol {
+    func getURL (_ host: String = Const.host, _ path: String = Const.path) -> URL? {
+        return getURL(host, path)
+    }
 }
 
 class Networking: NetworkingProtocol {
-    func getURL(_ host: String, _ path: String) -> URL? {
+    func getURL(_ host: String = Const.host, _ path: String = Const.path) -> URL? {
         var components = URLComponents()
-        components.scheme = "https"
+        components.scheme = Const.scheme
         components.host = host
         components.path = path
         
         return components.url
     }
     
-    func getModels(_ url: URL?) -> Future<Pokiemonies, NetErrors> {
+    func getModels<T: Codable>(_ url: URL?) -> Future<T, NetErrors> {
         
-        return Future<Pokiemonies, NetErrors> {promise in
+        return Future<T, NetErrors> {promise in
             guard let url = url else {return promise(.failure(.badURL(message: "URL could not be unwraped"))) }
             URLSession.shared.dataTask(with: url) { (data, respons, error) in
                 if let respons = respons as?  HTTPURLResponse, respons.statusCode != 200 {
@@ -41,7 +47,7 @@ class Networking: NetworkingProtocol {
                 guard let data = data else { return promise(.failure(.noData(message: "No data downloded")))}
                 
                 do {
-                    guard let result = try? JSONDecoder().decode(Pokiemonies.self, from: data) else {return promise(.failure(.decodingError(message: "Could not decode data")))}
+                    guard let result = try? JSONDecoder().decode(T.self, from: data) else {return promise(.failure(.decodingError(message: "Could not decode data")))}
                     DispatchQueue.main.async {
                         return promise(.success(result))
                     }

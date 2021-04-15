@@ -47,7 +47,7 @@ class ViewModel {
 extension ViewModel: ViewModelProtocol {
     func fetchPokemonList() {
         //https://pokeapi.co/api/v2/pokemon/
-         if let url = services.getURL("pokeapi.co", "/api/v2/pokemon/") {
+         if let url = services.getURL() {
              observer = services.getModels(url)
                 .sink(receiveCompletion: { (completion) in
                     switch completion {
@@ -57,7 +57,6 @@ extension ViewModel: ViewModelProtocol {
                     print("ERROR > \(e.localizedDescription)")
                     }
                 }, receiveValue: { [weak self] (result) in
-                    print(result)
                     self?.pokemonList = result
                 })
         }
