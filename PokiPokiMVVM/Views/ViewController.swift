@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         self.viewModel.fetchPokemonList()
         
         self.theTable.dataSource = self
+        self.theTable.delegate = self
     }
 }
 
@@ -36,8 +37,15 @@ extension ViewController: UITableViewDataSource {
         
         return cell
     }
-    
-    
+}
+
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selected = self.viewModel.pokemonList?.results[indexPath.row]
+        print("SELECTED > \(selected)")
+        guard let url = selected?.url else {return}
+        self.viewModel.getPokemon(from: url)
+    }
 }
 
 extension ViewController:ViewModelDelegate {

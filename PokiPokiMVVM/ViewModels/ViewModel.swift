@@ -9,7 +9,7 @@ import Foundation
 
 protocol ViewModelProtocol {
     func fetchPokemonList()
-    func getPokemon(for row: Int) -> Pokemon
+    func getPokemon(from url: String) -> Pokemon
 }
 
 protocol ViewModelDelegate: class {
@@ -63,21 +63,20 @@ extension ViewModel: ViewModelProtocol {
         }
     }
     
-    func getPokemon(for row: Int) -> Pokemon {
+    func getPokemon(from url: String) -> Pokemon {
         var pok = Pokemon(id: 1, name: "", baseExperience: 1, height: 1, weight: 1, sprites: nil)
+        print("URL>\(url)")
         return pok
     }
     
 }
 
-extension ViewModel: ViewModelDelegate {
-    func refreshTable() {
-        print("vm refreashing table")
-    }
-    
-    func refreshUI() {
-        print("vm refreashing UI")
-    }
-    
-    
-}
+//extension ViewModel: ViewModelDelegate {
+//    func refreshTable() {
+//        print("vm refreashing table")
+//    }
+//    
+//    func refreshUI() {
+//        print("vm refreashing UI")
+//    }
+//}
