@@ -11,6 +11,13 @@ class DetailsViewController: UIViewController {
     var pokeURL:String?
     var viewModel:ViewModel!
     
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var baseExpLabel: UILabel!
+    @IBOutlet weak var heightLabel: UILabel!
+    @IBOutlet weak var widthLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = ViewModel()
@@ -26,7 +33,11 @@ class DetailsViewController: UIViewController {
 extension DetailsViewController: ViewModelDelegateDetails {
     func refreshUI() {
         guard let poke = self.viewModel.pokemon else {return}
-        print(poke.name)
+        print(poke)
+        self.nameLabel.text = poke.name
+        self.baseExpLabel.text = "EXP: \(poke.baseExperience)"
+        self.heightLabel.text = "H: \(poke.height)"
+        self.widthLabel.text = "W: \(poke.weight)"
     }
     
     

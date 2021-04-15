@@ -131,6 +131,13 @@
                             <constraint firstItem="TdV-Da-7eb" firstAttribute="trailing" secondItem="RSt-ca-WEr" secondAttribute="trailing" id="wRV-ep-wRt"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="baseExpLabel" destination="yyJ-Jk-OxZ" id="A3J-aR-7o8"/>
+                        <outlet property="heightLabel" destination="8Ph-YS-fOx" id="VNZ-HD-hP9"/>
+                        <outlet property="image" destination="RSt-ca-WEr" id="ApE-ip-qme"/>
+                        <outlet property="nameLabel" destination="TdV-Da-7eb" id="Lwi-k2-KNY"/>
+                        <outlet property="widthLabel" destination="Jmk-KJ-bHv" id="8tQ-lF-jfI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7P8-Ty-RmH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
