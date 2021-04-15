@@ -16,6 +16,7 @@
 		D78A5BBA262836800046BA9F /* PokiPokiMVVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78A5BB9262836800046BA9F /* PokiPokiMVVMTests.swift */; };
 		D78A5BC5262836800046BA9F /* PokiPokiMVVMUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78A5BC4262836800046BA9F /* PokiPokiMVVMUITests.swift */; };
 		D78A5BDB26283A6E0046BA9F /* Pokemons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78A5BDA26283A6E0046BA9F /* Pokemons.swift */; };
+		D78A5BE326283CFD0046BA9F /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78A5BE226283CFD0046BA9F /* Networking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		D78A5BC4262836800046BA9F /* PokiPokiMVVMUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokiPokiMVVMUITests.swift; sourceTree = "<group>"; };
 		D78A5BC6262836800046BA9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D78A5BDA26283A6E0046BA9F /* Pokemons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemons.swift; sourceTree = "<group>"; };
+		D78A5BE226283CFD0046BA9F /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 		D78A5BD72628385D0046BA9F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D78A5BE226283CFD0046BA9F /* Networking.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 		D78A5BD82628386C0046BA9F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D78A5BDA26283A6E0046BA9F /* Pokemons.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -166,7 +170,6 @@
 		D78A5BD9262838770046BA9F /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				D78A5BDA26283A6E0046BA9F /* Pokemons.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D78A5BA72628367C0046BA9F /* ViewController.swift in Sources */,
+				D78A5BE326283CFD0046BA9F /* Networking.swift in Sources */,
 				D78A5BDB26283A6E0046BA9F /* Pokemons.swift in Sources */,
 				D78A5BA32628367C0046BA9F /* AppDelegate.swift in Sources */,
 				D78A5BA52628367C0046BA9F /* SceneDelegate.swift in Sources */,
