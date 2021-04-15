@@ -27,10 +27,15 @@ class ViewModel {
             delegate?.refreshUI()
         }
     }
+    
     var pokemonList:Pokiemonies?{
         didSet{
             delegate?.refreshTable()
         }
+    }
+    
+    var listCount: Int {
+        return pokemonList?.results.count ?? 0
     }
     
     init (services: NetworkingProtocol = Networking()) {
