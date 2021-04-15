@@ -14,16 +14,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.viewModel = ViewModel()
         self.viewModel.delegate = self
+        self.viewModel.fetchPokemonList()
     }
 }
 
 extension ViewController:ViewModelDelegate {
     func refreshTable() {
-        
+        print("VC refreashing table")
     }
     
     func refreshUI() {
-        
+        print("VC refreashing table")
     }
     
     
