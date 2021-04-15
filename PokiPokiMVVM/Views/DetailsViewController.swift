@@ -22,23 +22,30 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         self.viewModel = ViewModel()
         self.viewModel.delegateDetails = self
-  
-        print("DVC > \(pokeURL)")
+        
         if let url = pokeURL  {
             self.viewModel.getPokemon(from: url)
         }
     }
-
+    
 }
 extension DetailsViewController: ViewModelDelegateDetails {
     func refreshUI() {
         guard let poke = self.viewModel.pokemon else {return}
-        print(poke)
         self.nameLabel.text = poke.name
         self.baseExpLabel.text = "EXP: \(poke.baseExperience)"
         self.heightLabel.text = "H: \(poke.height)"
         self.widthLabel.text = "W: \(poke.weight)"
+        
+//        self.setImage()
     }
     
-    
+    func setImage() {
+        guard let data = self.viewModel.pokemonSpriteData else {return}
+        if let image = UIImage(data: data) {
+            DispatchQueue.main.async {
+                self.image.image = image
+            }
+        }
+    }
 }

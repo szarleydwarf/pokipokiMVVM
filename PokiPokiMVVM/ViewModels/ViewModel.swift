@@ -18,6 +18,7 @@ protocol ViewModelDelegateMain: class {
 
 protocol ViewModelDelegateDetails: class {
     func refreshUI()
+    func setImage()
 }
 
 class ViewModel {
@@ -29,8 +30,17 @@ class ViewModel {
     var pokemon:Pokemon? {
         didSet {
             delegateDetails?.refreshUI()
+            self.getSpriteData()
         }
     }
+    
+    var pokemonSpriteData: Data? {
+        didSet{
+            delegateDetails?.setImage()
+        }
+    }
+    
+    
     
     var pokemonList:Pokiemonies?{
         didSet{
@@ -45,10 +55,19 @@ class ViewModel {
     init (services: NetworkingProtocol = Networking()) {
         self.services = services
     }
-    
+ 
+    func getSpriteData() {
+        guard let stringUrl = self.pokemon?.sprites?.frontDefault, let url = URL(string: stringUrl) else {return}
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                self?.pokemonSpriteData = data
+            }
+        }
+    }
 }
 
 extension ViewModel: ViewModelProtocol {
+    
     func fetchPokemonList() {
         //https://pokeapi.co/api/v2/pokemon/
         if let url = services.getURL() {
