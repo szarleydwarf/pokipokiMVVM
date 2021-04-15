@@ -12,9 +12,27 @@ protocol ViewModelProtocol {
     func getPokemon(for row: Int) -> Pokemon
 }
 
+protocol ViewModelDelegate: class {
+    func refreshTable()
+    func refreshUI()
+}
+
 class ViewModel {
     private var observer: AnyCancellable?
     var services: NetworkingProtocol!
+    weak var delegate: ViewModelDelegate?
+    
+    var pokemon:Pokemon? {
+        didSet {
+            delegate?.refreshUI()
+        }
+    }
+    var pokemonList:Pokiemonies?{
+        didSet{
+            delegate?.refreshTable()
+        }
+    }
+    
     init (services: NetworkingProtocol = Networking()) {
         self.services = services
     }
@@ -35,13 +53,25 @@ extension ViewModel: ViewModelProtocol {
                     }
                 }, receiveValue: { [weak self] (result) in
                     print(result)
+                    self?.pokemonList = result
                 })
         }
     }
     
     func getPokemon(for row: Int) -> Pokemon {
+        var pok = Pokemon(id: 1, name: "", baseExperience: 1, height: 1, weight: 1, sprites: nil)
+        return pok
+    }
+    
+}
+
+extension ViewModel: ViewModelDelegate {
+    func refreshTable() {
         
-        return Pokemon()
+    }
+    
+    func refreshUI() {
+        
     }
     
     

@@ -24,7 +24,7 @@ struct Pokemon: Codable {
     let baseExperience: Int
     let height: Int
     let weight: Int
-    let sprites: Sprites
+    let sprites: Sprites?
     
     enum CodingKeys: String, CodingKey {
             case id, name, height, weight, sprites

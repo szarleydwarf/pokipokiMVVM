@@ -8,10 +8,23 @@
 import UIKit
 
 class ViewController: UIViewController {
-    private var services: NetworkingProtocol
+    var viewModel: ViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.viewModel = ViewModel()
+        self.viewModel.delegate = self
     }
 }
 
+extension ViewController:ViewModelDelegate {
+    func refreshTable() {
+        
+    }
+    
+    func refreshUI() {
+        
+    }
+    
+    
+}
