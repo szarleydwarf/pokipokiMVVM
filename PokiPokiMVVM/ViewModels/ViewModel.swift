@@ -9,7 +9,7 @@ import Foundation
 
 protocol ViewModelProtocol {
     func fetchPokemonList()
-    func getPokemon(from url: String) -> Pokemon
+    func getPokemon(from url: String)
 }
 
 protocol ViewModelDelegate: class {
@@ -47,14 +47,14 @@ class ViewModel {
 extension ViewModel: ViewModelProtocol {
     func fetchPokemonList() {
         //https://pokeapi.co/api/v2/pokemon/
-         if let url = services.getURL() {
-             observer = services.getModels(url)
+        if let url = services.getURL() {
+            observer = services.getModels(url)
                 .sink(receiveCompletion: { (completion) in
                     switch completion {
                     case .finished:
-                    print("COMPELETED")
+                        print("COMPELETED")
                     case .failure(let e):
-                    print("ERROR > \(e.localizedDescription)")
+                        print("ERROR > \(e.localizedDescription)")
                     }
                 }, receiveValue: { [weak self] (result) in
                     self?.pokemonList = result
@@ -62,20 +62,36 @@ extension ViewModel: ViewModelProtocol {
         }
     }
     
-    func getPokemon(from url: String) -> Pokemon {
-        var pok = Pokemon(id: 1, name: "", baseExperience: 1, height: 1, weight: 1, sprites: nil)
-        print("URL>\(url)")
-        return pok
+    func getPokemon(from url: String) {
+        if let url = URL(string: url) {
+            print("URL>\(url)")
+            observer = services.getModels(url)
+                .sink(receiveCompletion: { (completion) in
+                    switch completion {
+                    case .finished:
+                        print("COMPELETED")
+                    case .failure(let e):
+                        print("ERROR > \(e.localizedDescription)")
+                    }
+                }, receiveValue: { [weak self] (result) in
+                    self?.pokemon = result
+                })
+            /* Unable to infer type of a closure parameter 'result' in the current context
+             # 1st try
+            switch result {
+            case Pokemon:
+                print("pokemon")
+            case Pokiemonies:
+                print("List")
+            default:
+                print("who knows?")
+            }
+             # 2nd try
+             if object = result as? Pokemon {
+             }else if list = result as? Pokeminies {
+             }else{}
+             */
+        }
     }
     
 }
-
-//extension ViewModel: ViewModelDelegate {
-//    func refreshTable() {
-//        print("vm refreashing table")
-//    }
-//    
-//    func refreshUI() {
-//        print("vm refreashing UI")
-//    }
-//}
