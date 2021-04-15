@@ -12,25 +12,29 @@ protocol ViewModelProtocol {
     func getPokemon(from url: String)
 }
 
-protocol ViewModelDelegate: class {
+protocol ViewModelDelegateMain: class {
     func refreshTable()
+}
+
+protocol ViewModelDelegateDetails: class {
     func refreshUI()
 }
 
 class ViewModel {
     private var observer: AnyCancellable?
     var services: NetworkingProtocol!
-    weak var delegate: ViewModelDelegate?
+    weak var delegateMain: ViewModelDelegateMain?
+    weak var delegateDetails: ViewModelDelegateDetails?
     
     var pokemon:Pokemon? {
         didSet {
-            delegate?.refreshUI()
+            delegateDetails?.refreshUI()
         }
     }
     
     var pokemonList:Pokiemonies?{
         didSet{
-            delegate?.refreshTable()
+            delegateMain?.refreshTable()
         }
     }
     

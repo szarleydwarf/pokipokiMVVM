@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = ViewModel()
-        self.viewModel.delegate = self
+        self.viewModel.delegateMain = self
         self.viewModel.fetchPokemonList()
         
         self.theTable.dataSource = self
@@ -41,22 +41,20 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selected = self.viewModel.pokemonList?.results[indexPath.row]
-        print("SELECTED > \(selected)")
-        guard let url = selected?.url else {return}
-        self.viewModel.getPokemon(from: url)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailsView = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+        if let urlString = self.viewModel.pokemonList?.results[indexPath.row].url {
+            detailsView.pokeURL = urlString
+            
+            self.navigationController!.pushViewController(detailsView, animated: true)
+        }
     }
 }
 
-extension ViewController:ViewModelDelegate {
+extension ViewController:ViewModelDelegateMain {
     func refreshTable() {
         print("VC refreashing table")
         self.theTable.reloadData()
     }
-    
-    func refreshUI() {
-        print("VC refreashing table")
-    }
-    
-    
 }

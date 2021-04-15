@@ -19,6 +19,7 @@
 		D78A5BE326283CFD0046BA9F /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78A5BE226283CFD0046BA9F /* Networking.swift */; };
 		D78A5BEE2628468B0046BA9F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78A5BED2628468B0046BA9F /* ViewModel.swift */; };
 		D78A5C08262868B30046BA9F /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78A5C07262868B30046BA9F /* Const.swift */; };
+		D78A5C28262873820046BA9F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78A5C27262873820046BA9F /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		D78A5BE226283CFD0046BA9F /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		D78A5BED2628468B0046BA9F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		D78A5C07262868B30046BA9F /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		D78A5C27262873820046BA9F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			children = (
 				D78A5BA62628367C0046BA9F /* ViewController.swift */,
 				D78A5BA82628367C0046BA9F /* Main.storyboard */,
+				D78A5C27262873820046BA9F /* DetailsViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				D78A5BA72628367C0046BA9F /* ViewController.swift in Sources */,
 				D78A5BE326283CFD0046BA9F /* Networking.swift in Sources */,
 				D78A5BDB26283A6E0046BA9F /* Pokemons.swift in Sources */,
+				D78A5C28262873820046BA9F /* DetailsViewController.swift in Sources */,
 				D78A5BA32628367C0046BA9F /* AppDelegate.swift in Sources */,
 				D78A5BEE2628468B0046BA9F /* ViewModel.swift in Sources */,
 				D78A5BA52628367C0046BA9F /* SceneDelegate.swift in Sources */,
