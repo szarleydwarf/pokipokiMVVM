@@ -7,13 +7,25 @@
 import Combine
 import Foundation
 
+protocol ViewModelProtocol {
+    func fetchPokemonList()
+    func getPokemon(for row: Int) -> Pokemon
+}
+
 class ViewModel {
     private var observer: AnyCancellable?
+    var services: NetworkingProtocol!
+    init (services: NetworkingProtocol = Networking()) {
+        self.services = services
+    }
     
-    //https://pokeapi.co/api/v2/pokemon/
-    func fetchData() {
-        if let url = Networking().getURL("pokeapi.co/api/v2", "pokemon") {
-             observer = Networking().getModels(url)
+}
+
+extension ViewModel: ViewModelProtocol {
+    func fetchPokemonList() {
+        //https://pokeapi.co/api/v2/pokemon/
+         if let url = services.getURL("pokeapi.co/api/v2", "pokemon") {
+             observer = services.getModels(url)
                 .sink(receiveCompletion: { (completion) in
                     switch completion {
                     case .finished:
@@ -25,7 +37,12 @@ class ViewModel {
                     print(result)
                 })
         }
-
     }
+    
+    func getPokemon(for row: Int) -> Pokemon {
+        
+        return Pokemon()
+    }
+    
     
 }

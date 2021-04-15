@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    private var services: NetworkingProtocol
     override func viewDidLoad() {
         super.viewDidLoad()
 

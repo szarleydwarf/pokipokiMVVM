@@ -110,11 +110,6 @@
 				D78A5BD72628385D0046BA9F /* Services */,
 				D78A5BD6262838550046BA9F /* ViewModels */,
 				D78A5BD52628383D0046BA9F /* Views */,
-				D78A5BA22628367C0046BA9F /* AppDelegate.swift */,
-				D78A5BA42628367C0046BA9F /* SceneDelegate.swift */,
-				D78A5BA62628367C0046BA9F /* ViewController.swift */,
-				D78A5BA82628367C0046BA9F /* Main.storyboard */,
-				D78A5BAB262836800046BA9F /* Assets.xcassets */,
 				D78A5BAD262836800046BA9F /* LaunchScreen.storyboard */,
 				D78A5BB0262836800046BA9F /* Info.plist */,
 			);
@@ -142,6 +137,8 @@
 		D78A5BD52628383D0046BA9F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D78A5BA62628367C0046BA9F /* ViewController.swift */,
+				D78A5BA82628367C0046BA9F /* Main.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -173,6 +170,9 @@
 		D78A5BD9262838770046BA9F /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				D78A5BA42628367C0046BA9F /* SceneDelegate.swift */,
+				D78A5BA22628367C0046BA9F /* AppDelegate.swift */,
+				D78A5BAB262836800046BA9F /* Assets.xcassets */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
