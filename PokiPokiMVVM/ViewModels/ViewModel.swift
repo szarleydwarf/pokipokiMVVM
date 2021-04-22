@@ -34,7 +34,7 @@ class ViewModel {
         }
     }
     
-   private var pokemonSpriteData: Data? {
+    private var pokemonSpriteData: Data? {
         didSet{
             delegateDetails?.setImage(using: self.pokemonSpriteData)
         }
@@ -55,12 +55,10 @@ class ViewModel {
     init (services: NetworkingProtocol = Networking()) {
         self.services = services
     }
- 
+    
     func getSpriteData() {
-        guard let stringUrl = self.pokemon?.sprites?.frontDefault, let url = URL(string: stringUrl) else {return}
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                self?.pokemonSpriteData = data
+        if let stringURL = self.pokemon?.sprites?.frontDefault {
+            DispatchQueue.global().async { [weak self] in    self?.pokemonSpriteData = self?.services.getImageData(from: stringURL)
             }
         }
     }
@@ -99,21 +97,6 @@ extension ViewModel: ViewModelProtocol {
                 }, receiveValue: { [weak self] (result) in
                     self?.pokemon = result
                 })
-            /* Unable to infer type of a closure parameter 'result' in the current context
-             # 1st try
-            switch result {
-            case Pokemon:
-                print("pokemon")
-            case Pokiemonies:
-                print("List")
-            default:
-                print("who knows?")
-            }
-             # 2nd try
-             if object = result as? Pokemon {
-             }else if list = result as? Pokeminies {
-             }else{}
-             */
         }
     }
     

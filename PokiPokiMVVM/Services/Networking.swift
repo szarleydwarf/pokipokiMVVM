@@ -16,7 +16,8 @@ enum NetErrors: Error {
 }
 protocol NetworkingProtocol {
     func getURL (_ host: String, _ path:String) -> URL?
-    func getModels<T: Codable>(_ url: URL?) -> Future<T, NetErrors> 
+    func getModels<T: Codable>(_ url: URL?) -> Future<T, NetErrors>
+    func getImageData(from stringURL: String) -> Data
 }
 
 extension NetworkingProtocol {
@@ -57,5 +58,11 @@ class Networking: NetworkingProtocol {
         }
     }
     
-    
-}
+    func getImageData(from stringURL: String) -> Data {
+        
+        guard let url = URL(string: stringURL) else {return Data()}
+        guard let data = try? Data(contentsOf: url) else { return Data() }
+            return data
+            
+        }
+    }
