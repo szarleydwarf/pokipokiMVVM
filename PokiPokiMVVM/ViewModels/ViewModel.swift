@@ -18,7 +18,7 @@ protocol ViewModelDelegateMain: class {
 
 protocol ViewModelDelegateDetails: class {
     func refreshUI(with pokiemon: Pokemon?)
-    func setImage(using data:Data?)
+    func setImage(using data: Data?)
 }
 
 class ViewModel {
@@ -26,46 +26,44 @@ class ViewModel {
     var services: NetworkingProtocol!
     weak var delegateMain: ViewModelDelegateMain?
     weak var delegateDetails: ViewModelDelegateDetails?
-    
-    private var pokemon:Pokemon? {
+
+    private var pokemon: Pokemon? {
         didSet {
             delegateDetails?.refreshUI(with: self.pokemon)
             self.getSpriteData()
         }
     }
-    
+
     private var pokemonSpriteData: Data? {
-        didSet{
+        didSet {
             delegateDetails?.setImage(using: self.pokemonSpriteData)
         }
     }
-    
-    
-    
-    var pokemonList:Pokiemonies?{
-        didSet{
+
+    var pokemonList: Pokiemonies? {
+        didSet {
             delegateMain?.refreshTable()
         }
     }
-    
+
     var listCount: Int {
         return pokemonList?.results.count ?? 0
     }
-    
+
     init (services: NetworkingProtocol = Networking()) {
         self.services = services
     }
-    
+
     func getSpriteData() {
         if let stringURL = self.pokemon?.sprites?.frontDefault {
-            DispatchQueue.global().async { [weak self] in    self?.pokemonSpriteData = self?.services.getImageData(from: stringURL)
+            DispatchQueue.global().async { [weak self] in
+                self?.pokemonSpriteData = self?.services.getImageData(from: stringURL)
             }
         }
     }
 }
 
 extension ViewModel: ViewModelProtocol {
-    
     func fetchPokemonList() {
         //https://pokeapi.co/api/v2/pokemon/
         if let url = services.getURL() {
@@ -74,15 +72,15 @@ extension ViewModel: ViewModelProtocol {
                     switch completion {
                     case .finished:
                         print("COMPELETED")
-                    case .failure(let e):
-                        print("ERROR > \(e.localizedDescription)")
+                    case .failure(let err):
+                        print("ERROR > \(err.localizedDescription)")
                     }
                 }, receiveValue: { [weak self] (result) in
                     self?.pokemonList = result
                 })
         }
     }
-    
+
     func getPokemon(from url: String) {
         if let url = URL(string: url) {
             print("URL>\(url)")
@@ -91,13 +89,12 @@ extension ViewModel: ViewModelProtocol {
                     switch completion {
                     case .finished:
                         print("COMPELETED")
-                    case .failure(let e):
-                        print("ERROR > \(e.localizedDescription)")
+                    case .failure(let err):
+                        print("ERROR > \(err.localizedDescription)")
                     }
                 }, receiveValue: { [weak self] (result) in
                     self?.pokemon = result
                 })
         }
     }
-    
 }
