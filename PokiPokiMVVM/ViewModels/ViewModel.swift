@@ -17,8 +17,8 @@ protocol ViewModelDelegateMain: class {
 }
 
 protocol ViewModelDelegateDetails: class {
-    func refreshUI()
-    func setImage()
+    func refreshUI(with pokiemon: Pokemon?)
+    func setImage(using data:Data?)
 }
 
 class ViewModel {
@@ -27,16 +27,16 @@ class ViewModel {
     weak var delegateMain: ViewModelDelegateMain?
     weak var delegateDetails: ViewModelDelegateDetails?
     
-    var pokemon:Pokemon? {
+    private var pokemon:Pokemon? {
         didSet {
-            delegateDetails?.refreshUI()
+            delegateDetails?.refreshUI(with: self.pokemon)
             self.getSpriteData()
         }
     }
     
-    var pokemonSpriteData: Data? {
+   private var pokemonSpriteData: Data? {
         didSet{
-            delegateDetails?.setImage()
+            delegateDetails?.setImage(using: self.pokemonSpriteData)
         }
     }
     

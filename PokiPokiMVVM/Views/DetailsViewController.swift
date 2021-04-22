@@ -30,8 +30,8 @@ class DetailsViewController: UIViewController {
     
 }
 extension DetailsViewController: ViewModelDelegateDetails {
-    func refreshUI() {
-        guard let poke = self.viewModel.pokemon else {return}
+    func refreshUI(with pokiemon: Pokemon?) {
+        guard let poke = pokiemon else {return}
         self.nameLabel.text = poke.name
         self.baseExpLabel.text = "EXP: \(poke.baseExperience)"
         self.heightLabel.text = "H: \(poke.height)"
@@ -40,8 +40,8 @@ extension DetailsViewController: ViewModelDelegateDetails {
 //        self.setImage()
     }
     
-    func setImage() {
-        guard let data = self.viewModel.pokemonSpriteData else {return}
+    func setImage(using data:Data?) {
+        guard let data = data else {return}
         if let image = UIImage(data: data) {
             DispatchQueue.main.async {
                 self.image.image = image
