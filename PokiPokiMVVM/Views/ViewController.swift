@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.viewModel = ViewModel()
         self.viewModel.delegateMain = self
+        self.viewModel.delegateError = self
         self.viewModel.fetchPokemonList()
 
         self.theTable.dataSource = self
@@ -54,7 +55,12 @@ extension ViewController: UITableViewDelegate {
 
 extension ViewController: ViewModelDelegateMain {
     func refreshTable() {
-        print("VC refreashing table")
         self.theTable.reloadData()
+    }
+}
+
+extension ViewController: ViewModelErrorsProtocol {
+    func displayError(message: String) {
+        Toast().displayToast(in: self.view, message: message)
     }
 }

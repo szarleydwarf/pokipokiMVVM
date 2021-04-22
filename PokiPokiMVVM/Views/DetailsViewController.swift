@@ -45,3 +45,9 @@ extension DetailsViewController: ViewModelDelegateDetails {
         }
     }
 }
+
+extension DetailsViewController: ViewModelErrorsProtocol {
+    func displayError(message: String) {
+        Toast().displayToast(in: self.view, message: message)
+    }
+}

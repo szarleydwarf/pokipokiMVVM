@@ -21,11 +21,16 @@ protocol ViewModelDelegateDetails: class {
     func setImage(using data: Data?)
 }
 
+protocol ViewModelErrorsProtocol: class {
+    func displayError(message: String)
+}
+
 class ViewModel {
     private var observer: AnyCancellable?
     var services: NetworkingProtocol!
     weak var delegateMain: ViewModelDelegateMain?
     weak var delegateDetails: ViewModelDelegateDetails?
+    weak var delegateError: ViewModelErrorsProtocol?
 
     private var pokemon: Pokemon? {
         didSet {
@@ -48,6 +53,12 @@ class ViewModel {
 
     var listCount: Int {
         return pokemonList?.results.count ?? 0
+    }
+
+    var error: String? {
+        didSet {
+            delegateError?.displayError(message: self.error ?? "ERROR UNKOWN!")
+        }
     }
 
     init (services: NetworkingProtocol = Networking()) {
@@ -73,6 +84,7 @@ extension ViewModel: ViewModelProtocol {
                     case .finished:
                         print("COMPELETED")
                     case .failure(let err):
+                        self.error = err.localizedDescription
                         print("ERROR > \(err.localizedDescription)")
                     }
                 }, receiveValue: { [weak self] (result) in

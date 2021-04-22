@@ -20,6 +20,8 @@
 		D78A5BEE2628468B0046BA9F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78A5BED2628468B0046BA9F /* ViewModel.swift */; };
 		D78A5C08262868B30046BA9F /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78A5C07262868B30046BA9F /* Const.swift */; };
 		D78A5C28262873820046BA9F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78A5C27262873820046BA9F /* DetailsViewController.swift */; };
+		D79C43D62631AF0A00203790 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C43D52631AF0A00203790 /* Toast.swift */; };
+		D79C43E02631B1E000203790 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C43DF2631B1E000203790 /* Animations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		D78A5BED2628468B0046BA9F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		D78A5C07262868B30046BA9F /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		D78A5C27262873820046BA9F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		D79C43D52631AF0A00203790 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		D79C43DF2631B1E000203790 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +183,8 @@
 				D78A5BA22628367C0046BA9F /* AppDelegate.swift */,
 				D78A5BAB262836800046BA9F /* Assets.xcassets */,
 				D78A5C07262868B30046BA9F /* Const.swift */,
+				D79C43D52631AF0A00203790 /* Toast.swift */,
+				D79C43DF2631B1E000203790 /* Animations.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -340,7 +346,9 @@
 				D78A5C28262873820046BA9F /* DetailsViewController.swift in Sources */,
 				D78A5BA32628367C0046BA9F /* AppDelegate.swift in Sources */,
 				D78A5BEE2628468B0046BA9F /* ViewModel.swift in Sources */,
+				D79C43E02631B1E000203790 /* Animations.swift in Sources */,
 				D78A5BA52628367C0046BA9F /* SceneDelegate.swift in Sources */,
+				D79C43D62631AF0A00203790 /* Toast.swift in Sources */,
 				D78A5C08262868B30046BA9F /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
