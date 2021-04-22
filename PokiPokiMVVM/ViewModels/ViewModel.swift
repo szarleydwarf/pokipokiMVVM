@@ -7,8 +7,11 @@
 import Combine
 import Foundation
 
-protocol ViewModelProtocol {
+protocol ViewModelListProtocol {
     func fetchPokemonList()
+}
+
+protocol ViewModelPokemoneProtocol {
     func getPokemon(from url: String)
 }
 
@@ -76,7 +79,7 @@ class ViewModel {
     }
 }
 
-extension ViewModel: ViewModelProtocol {
+extension ViewModel: ViewModelListProtocol {
     func fetchPokemonList() {
         //https://pokeapi.co/api/v2/pokemon/
         if let url = services.getURL() {
@@ -94,7 +97,9 @@ extension ViewModel: ViewModelProtocol {
                 })
         }
     }
+}
 
+extension ViewModel: ViewModelPokemoneProtocol {
     func getPokemon(from url: String) {
         if let url = URL(string: url) {
             print("URL>\(url)")
@@ -112,4 +117,5 @@ extension ViewModel: ViewModelProtocol {
                 })
         }
     }
+
 }

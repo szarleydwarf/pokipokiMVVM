@@ -49,6 +49,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPo-zx-0Yc">
+                                <rect key="frame" x="368" y="89" width="36" height="32.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="DqW-T9-7Cc"/>
+                                    <constraint firstAttribute="width" secondItem="gPo-zx-0Yc" secondAttribute="height" multiplier="1:1" id="X7r-8C-7Hm"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="arrow.clockwise.icloud" catalog="system"/>
+                                <connections>
+                                    <action selector="refresh:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oDc-XX-2H8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -58,6 +69,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4rv-TV-3iE" secondAttribute="trailing" id="FMl-jL-PcD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QTi-bB-ZYL" secondAttribute="trailing" id="He2-N3-VZZ"/>
                             <constraint firstItem="4rv-TV-3iE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ljk-TW-pjF"/>
+                            <constraint firstItem="gPo-zx-0Yc" firstAttribute="trailing" secondItem="4rv-TV-3iE" secondAttribute="trailing" constant="-10" id="Nw0-HC-B2y"/>
+                            <constraint firstItem="gPo-zx-0Yc" firstAttribute="top" secondItem="4rv-TV-3iE" secondAttribute="top" id="g6X-HD-VBn"/>
                             <constraint firstItem="QTi-bB-ZYL" firstAttribute="top" secondItem="4rv-TV-3iE" secondAttribute="bottom" constant="10" id="mKj-yc-B9h"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="QTi-bB-ZYL" secondAttribute="bottom" id="nXZ-vF-UsB"/>
                         </constraints>
@@ -163,6 +176,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise.icloud" catalog="system" width="128" height="88"/>
         <image name="scribble.variable" catalog="system" width="128" height="118"/>
         <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">

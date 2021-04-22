@@ -21,6 +21,10 @@ class ViewController: UIViewController {
         self.theTable.dataSource = self
         self.theTable.delegate = self
     }
+
+    @IBAction func refresh(_ sender: UIButton) {
+        self.viewModel.fetchPokemonList()
+    }
 }
 
 extension ViewController: UITableViewDataSource {
