@@ -10,5 +10,5 @@ import Foundation
 struct Const {
     static let scheme = "https"
     static let host = "pokeapi.co"
-    static let path = "/api/v2/pokemon/"
+    static let path = "/api/v2/poke/"
 }

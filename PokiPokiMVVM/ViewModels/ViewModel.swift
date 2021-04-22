@@ -57,7 +57,9 @@ class ViewModel {
 
     var error: String? {
         didSet {
-            delegateError?.displayError(message: self.error ?? "ERROR UNKOWN!")
+            DispatchQueue.main.async { [weak self] in
+                self?.delegateError?.displayError(message: self?.error ?? "ERROR UNKOWN!")
+            }
         }
     }
 
@@ -102,6 +104,7 @@ extension ViewModel: ViewModelProtocol {
                     case .finished:
                         print("COMPELETED")
                     case .failure(let err):
+                        self.error = "ERROR > \(err.localizedDescription)"
                         print("ERROR > \(err.localizedDescription)")
                     }
                 }, receiveValue: { [weak self] (result) in
